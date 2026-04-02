@@ -2775,6 +2775,20 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 </script>
+
+<!-- منع التخزين المؤقت في جميع المتصفحات -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+<!-- إضافة إصدار تلقائي للملفات -->
+<script>
+    // إضافة timestamp لمنع الكاش
+    const version = new Date().getTime();
+    document.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
+        link.href = link.href.split('?')[0] + '?v=' + version;
+    });
+</script>
 </body>
 
 </html>
