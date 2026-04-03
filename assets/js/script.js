@@ -1,97 +1,30 @@
 
-//     // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-//     if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-//         document.documentElement.classList.add('dark');
-//     } else {
-//         document.documentElement.classList.remove('dark')
-//     }
 
-// var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-// var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-
-// // Change the icons inside the button based on previous settings
-// if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-//     themeToggleLightIcon.classList.remove('hidden');
-// } else {
-//     themeToggleDarkIcon.classList.remove('hidden');
-// }
-
-// var themeToggleBtn = document.getElementById('theme-toggle');
-
-// themeToggleBtn.addEventListener('click', function() {
-
-//     // toggle icons inside button
-//     themeToggleDarkIcon.classList.toggle('hidden');
-//     themeToggleLightIcon.classList.toggle('hidden');
-
-//     // if set via local storage previously
-//     if (localStorage.getItem('color-theme')) {
-//         if (localStorage.getItem('color-theme') === 'light') {
-//             document.documentElement.classList.add('dark');
-//             localStorage.setItem('color-theme', 'dark');
-//         } else {
-//             document.documentElement.classList.remove('dark');
-//             localStorage.setItem('color-theme', 'light');
-//         }
-
-//     // if NOT set via local storage previously
-//     } else {
-//         if (document.documentElement.classList.contains('dark')) {
-//             document.documentElement.classList.remove('dark');
-//             localStorage.setItem('color-theme', 'light');
-//         } else {
-//             document.documentElement.classList.add('dark');
-//             localStorage.setItem('color-theme', 'dark');
-//         }
-//     }
+// ضبط موضع الهيرو ليبدأ من نهاية الناف بار مع مسافة إضافية
+function adjustHeroPosition() {
+    const navbar = document.querySelector('nav');
+    const hero = document.querySelector('.hero-section');
     
-// });
+    if (navbar && hero) {
+        // الحصول على ارتفاع الناف بار
+        const navbarHeight = navbar.offsetHeight;
+        
+        // إضافة 10 بكسل إضافية كمسافة آمنة
+        const totalPadding = navbarHeight + 10;
+        
+        // إضافة padding-top مساوٍ لارتفاع الناف بار + 10
+        hero.style.paddingTop = totalPadding + 'px';
+        
+        console.log('Navbar height:', navbarHeight);
+        console.log('Hero padding-top:', totalPadding);
+    }
+}
 
+// تنفيذ عند تحميل الصفحة
+document.addEventListener('DOMContentLoaded', adjustHeroPosition);
 
-// var heroImage = document.getElementById('hero-image');
-
-// themeToggleBtn.addEventListener('click', function() {
-
-//     // toggle icons inside button
-//     themeToggleDarkIcon.classList.toggle('hidden');
-//     themeToggleLightIcon.classList.toggle('hidden');
-
-//     // إذا كان هناك قيمة في localStorage
-//     if (localStorage.getItem('color-theme')) {
-//         if (localStorage.getItem('color-theme') === 'light') {
-//             document.documentElement.classList.add('dark');
-//             localStorage.setItem('color-theme', 'dark');
-//             heroImage.src = 'assets/images/img-hero2.jpeg'; // الصورة المظلمة
-//         } else {
-//             document.documentElement.classList.remove('dark');
-//             localStorage.setItem('color-theme', 'light');
-//             heroImage.src = 'assets/images/hero-img1.jpeg'; // الصورة النهارية
-//         }
-//     } else {
-//         if (document.documentElement.classList.contains('dark')) {
-//             document.documentElement.classList.remove('dark');
-//             localStorage.setItem('color-theme', 'light');
-//             heroImage.src = 'assets/images/hero-img1.jpeg'; // الصورة النهارية
-//         } else {
-//             document.documentElement.classList.add('dark');
-//             localStorage.setItem('color-theme', 'dark');
-//             heroImage.src = 'assets/images/img-hero2.jpeg'; // الصورة المظلمة
-//         }
-//     }
-// });
-
-// // عند تحميل الصفحة
-// if (document.documentElement.classList.contains('dark')) {
-//     heroImage.src = 'assets/images/img-hero2.jpeg'; // مظلم
-// } else {
-//     heroImage.src = 'assets/images/hero-img1.jpeg'; // نهاري
-// }
- 
-
-
-// عند تحميل الصفحة: تحديد الوضع من localStorage أو النظام
-
-
+// تنفيذ عند تغيير حجم النافذة
+window.addEventListener('resize', adjustHeroPosition);
 
 // فلترة الكورسات حسب التصنيف
 document.addEventListener('DOMContentLoaded', function() {
@@ -201,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // End hero
 
 // start navbar 
-// start navbar 
+
 // ========================================
 // نظام الناف بار المتكامل (مثبت في الأعلى)
 // ========================================
